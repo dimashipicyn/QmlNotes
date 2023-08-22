@@ -66,6 +66,7 @@ ApplicationWindow {
         }
 
         Rectangle {
+            id: spacer
             width: parent.width
             height: 1
             color: "light grey"
@@ -73,12 +74,13 @@ ApplicationWindow {
 
         ScrollView {
             width: parent.width
+            height: 290
 
             ListView {
                 id: notesView
-                anchors.fill: parent
                 model: noteModel
                 spacing: 5
+                clip: true
 
                 delegate: Rectangle {
                     width: parent.width
