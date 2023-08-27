@@ -3,22 +3,22 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
-    app.setOrganizationName("Dmitry Shipicyn");
-    app.setOrganizationDomain("dmitryshipicyn.com");
-    app.setApplicationName("Notes");
+	app.setOrganizationName("Dmitry Shipicyn");
+	app.setOrganizationDomain("dmitryshipicyn.com");
+	app.setApplicationName("Notes");
 
-    QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+	QQmlApplicationEngine engine;
+	const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+					 &app, [url](QObject *obj, const QUrl &objUrl) {
+		if (!obj && url == objUrl)
+			QCoreApplication::exit(-1);
+	}, Qt::QueuedConnection);
+	engine.load(url);
 
-    return app.exec();
+	return app.exec();
 }
